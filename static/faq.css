@@ -1,0 +1,100 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    -webkit-font-smoothing: antialiased;
+    margin: auto;
+}
+
+#acc-container {
+    width: 80%;
+    margin: auto;
+    padding-top: 2%;
+}
+
+/*the buttons that are used to open and close the accordion panel */
+.accordion {
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    display: block;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.accordion:hover {
+    color: #e810a9;
+}
+
+.acc-title a:focus {
+    color: #e810a9 !important;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+    width: 100%;
+    display: none;
+    overflow: hidden;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-color: #e810a9;
+    border-width: 1px;
+    color: #333;
+    font-weight: 400;
+}
+h1#faq-h1{
+    text-align: center;
+    margin-top: 10%;
+}
+
+.acc-title {
+    border-Style: solid;
+    border-color: #e810a9;
+    border-width: 1px;
+    font-weight: 700;
+    color: #333;
+}
+
+.acc-content-box {
+    margin-bottom: 1%;
+}
+
+.acc-title :active {
+    border-bottom-width: 0px;
+}
+
+a {
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.word-tutorials {
+    text-align: center;
+    font-weight: 600;
+    font-family: inherit;
+    color: #e810a9;
+    padding-top: 60px;
+    padding-bottom: 10px;
+    font-size: 2em;
+}
+
+#js-p {
+    padding: 1% 1% 1% 1%;
+}
+
+#js-iframe-p {
+    padding-left: .5%;
+    padding-right: .5%;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+#iframe-inter-chart {
+    width: 100%;
+    height: 170px;
+}

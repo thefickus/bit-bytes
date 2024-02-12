@@ -1,0 +1,19 @@
+<!DOCTYPE html> 
+<link rel="icon" href="/static/FWIcon.png">
+<title>Signin</title>
+<!-- Bootstrap core CSS -->
+<link href="/static/min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="/static/signin.css" rel="stylesheet">
+<embed src="/static/oohwee.mp3" width="0" height="0" loop="false" autostart="true" hidden="true" />
+</head>
+<body class="text-center">
+<form class="form-signin" method="post" action="/login/action/">
+{% csrf_token %}
+<img class="mb-4" src="/static/FWIcon.png" alt="" width="72" height="72">
+<h1 class="h3 mb-3 font-weight-normal"><p>You aren't supposed to be here!</p><p>Click below to go back.</p></h1>
+<a href="javascript:history.go(-1)" class="btn btn-primary">Go Back</a>
+</form>  
+</body>
+</html>
+

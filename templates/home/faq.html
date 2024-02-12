@@ -1,0 +1,860 @@
+{% extends "universal/header.html" %}
+
+{% block content %}
+<main>
+    <h1 id="faq-h1">FAQ PAGE HEADING</h1>
+    <!--Accordion 1-->
+    <div id="acc-container">
+        <div class="acc-content-box">
+            <div id="spot-prices-not-updating" class="acc-title">
+                <a href='#spot-prices-not-updating' class="accordion">Why are my spot prices not updating?</a>
+            </div>
+            <div class="panel">
+                <span style="font-weight: 400;">
+                    If spot prices do not appear to be updating, it may be because the market is closed. Market hours for precious metals correspond to
+                    <span>
+                        <a href="https://www.cmegroup.com/trading-hours.html#metals">CME Globex hours for metals futures</a>
+                    </span>
+                </span>
+            </div>
+        </div>
+
+        <!--Accordion 2-->
+        <div class="acc-content-box">
+            <div id="customize-company-spot-price" class="acc-title">
+                <a href='#customize-company-spot-price' class="accordion">How can I customize my company's spot price?</a>
+            </div>
+            <div class="panel">
+                <p>
+                    <span style="font-weight: 400;">Log into your product catalog as an administrator. When you are logged in, you should see the menu item Config in the navigation bar at the top of the screen. Click on the Config menu item to display a dropdown menu. Click on the Spot Admin option. It will be the third option on the menu.</span>
+
+                    <span style="font-weight: 400;">From there you can control the spot prices powering all of your services (charts, widgets, mobile apps, product catalog, alerts, etc). You can set a Fixed Value or an Adjustment Value for your spot prices. To override your spot price with a Fixed Value, use the fields Bid and/or Ask for the appropriate metal. For example, to lock your Ask of Gold at a fixed price of $1,215.75, put that value in the Ask field for gold. To apply an adjustment value to your spot price, use the fields for Bid Adjustment and or Ask Adjustment for the appropriate metal. For example, to have your Ask of Gold automatically adjust by ¢50 over the spot price and your bid automatically adjust by the same amount, you would set “Ask Adjustment” for Gold to 0.5 and the “Bid Adjustment” for Gold to -0.5.</span>
+
+                    <span style="font-weight: 400;">Also, Enable Spot Price Overrides must be checked and settings saved for any of these values to be applied. To turn these values off and resume the use of the spot price data feed, uncheck the Enable Spot Price Overrides checkbox and save the settings.</span>
+
+                </p>
+            </div>
+        </div>
+
+        <!--Accordion 3-->
+        <div class="acc-content-box">
+            <div id="match-site-Y" class="acc-title">
+                <a href='#match-site-Y' class="accordion">Why does the change value (price, bid, ask, etc) on our site not match site Y?</a>
+            </div>
+            <div class="panel">
+                <p>
+                    There are a number of factors that affect how spot prices are calculated and how they are displayed.
+                <ol>
+                    <li>Site Y may be using a different data source. If they are using a different data provider their spot prices will almost certainly be slightly different due to variations in calculations, delivery, caching and timing.</li>
+                    <li>Site Y may be applying adjustments to the global spot price in order to affect how their site displays pricing data.</li>
+                    <li>Site Y may have difference from your site such as speed, latency, delivery, caching, polling intervals and code.</li>
+                </ol>
+                </p>
+            </div>
+        </div>
+        <!--Accordion 4-->
+        <div class="acc-content-box">
+            <div id="spot-price-data" class="acc-title">
+                <a href='#spot-price-data' class="accordion">How can I get spot price data in XML or JSON?</a>
+            </div>
+            <div class="panel">
+                <p>
+                    <span style="font-weight: 400;">Add or change the HTTP headers within the API request. The header that you will need to change/add is the Accept header. The recommended value for this header is application/json. However, If you prefer XML results, you can specify application/xml but we recommend JSON for most use cases.</span>
+                </p>
+            </div>
+        </div>
+        <!--Accordion 5-->
+        <div class="acc-content-box">
+            <div id="integrate-apis" class="acc-title">
+                <a href='#integrate-apis' class="accordion">How do I integrate catelog data (APIs)?</a>
+            </div>
+            <div class="panel">
+                <p>
+                    In order to access the nFusion Solutions APIs, you will be issued one or more API tokens, depending on your use case. These API tokens should be considered a secret, and should not be exposed over the public internet. To that end, API calls should never be made directly in JavaScript such that the code can be inspected in a browser and the API token discovered. Instead of making direct calls to nFusion APIs in client-side code, please use a proxy on your own server.
+
+                    For example, https://yoursite.com/proxy/metals/spot. The nFusion API can then be called from your server-side code and the token will not be exposed.
+
+                    It is also highly recommended that your proxy perform some form of caching so that the ratio of client-side requests for data is not 1:1 with calls to nFusion APIs, as this will boost performance.
+
+                    Moreover, when accessing our data API, some of the following HTTP headers should be added to your API requests, depending on your use cases.
+                <ul>
+                    <li>Accept
+                        <ul>
+                            <li>The recommended value for this header is “application/json”. If you prefer XML results you can specify “application/xml”, but we recommend JSON for most use cases.</li>
+                        </ul>
+                    </li>
+                    <li>Accept-Encoding
+                        <ul>
+                            <li>The recommended value for this header is “deflate,gzip”. This will result in compressed results that generally have better performance.</li>
+                        </ul>
+                    </li>
+                    <li>Content-Type
+                        <ul>
+                            <li>For POST/PUT operations that require a message body this header should be set to “application/json”.</li>
+                        </ul>
+                    </li>
+                    <li>User-Agent
+                        <ul>
+                            <li>We recommend setting this to your customer id.</li>
+                        </ul>
+                    </li>
+                </ul>
+                </p>
+            </div>
+        </div>
+        <!--Accordion 6-->
+        <div class="acc-content-box">
+            <div id="api-call-return" class="acc-title">
+                <a href='#api-call-return' class="accordion">Why do some of my API calls return HTTP code 403?</a>
+            </div>
+            <div class="panel">
+                <p>
+                    When your API calls return an HTTP code 403 (forbidden), with sub status 502, your API call has exceeded rate limits. This means that you are calling the API too many times within a certain period of time and are therefore being denied. Reducing the number of API calls you make per second will resolve the issue.
+                </p>
+            </div>
+        </div>
+        <!--Accordion 7-->
+        <div class="acc-content-box">
+            <div id="widgets-not-loading" class="acc-title">
+                <a href='#widgets-not-loading' class="accordion">Why are the widgets on my site not loading?</a>
+            </div>
+            <div class="panel">
+                <p>
+                    <span style="font-weight: 400;">There are a number of reasons that widgets may fail to load on a page.</span>
+                <ol>
+                    <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">If you are receiving responses with status code 401 (unauthorized), it may be that your subscription has expired or you have a domain mismatch.</span></li>
+                    <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">You may have added the script code to your page incorrectly. Double-check the included instructions you received.</span></li>
+                    <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">There is a javascript error on the page. Check your browser developer panel for errors.</span></li>
+                    <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">There is more than one widget on the same page with <span><a href="https://www.w3schools.com/html/html_id.asp" target="_blank" rel="noopener">matching IDs.</a></span> This is causing a conflict with the widget scripts. To remedy this error, see our <a href="#scroll-instance"><span>tutorial below</span> </a>on how to add multiple instances of one widget to the same.</span></li>
+                </ol>
+                </p>
+            </div>
+        </div>
+        <!--Accordion 8-->
+        <div class="acc-content-box">
+            <div id="how-to-customize-widgets" class="acc-title">
+                <a href='#how-to-customize-widgets' class="accordion">How do we customize the style of our widgets?</a>
+            </div>
+            <div class="panel">
+                <p>
+                    <span style="font-weight: 400;">Custom CSS changes to your widgets can be made by the nFusion Solutions support team. You can send the desired CSS code to <a href="mailto:support@nfusionsolutions.com"><span>support@nfusionsolutions.com</span></a>. If you are not able to create the CSS yourself, you can send support a mockup of how you would like your widget to be styled along with the necessary specifications such as color codes (RGB, or hex), height, width, font family, etc. This will allow our team to be efficient and style your widget according to your requirements.</span>
+                </p>
+            </div>
+        </div>
+        <!--Accordion 9-->
+        <div class="acc-content-box">
+            <div id="messages-to-alert-users" class="acc-title">
+                <a href='#messages-to-alert-users' class="accordion">How do I send messages to alert users?</a>
+            </div>
+            <div class="panel">
+                <p>
+                    <span style="font-weight: 400;">Sign in to the Alerts Services portal using your admin email address. Once you have logged in as the admin to the admin URL, you’ll see the following options:</span>
+
+                    &nbsp;
+                <ul>
+                    <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Set marketing message for alerts emails</span></li>
+                    <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Send a promotional message now to all users</span></li>
+                    <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Export user list</span></li>
+                    <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Manage Email templates</span></li>
+                </ul>
+                &nbsp;
+
+                <span style="font-weight: 400;">Click on the second option—send a promotional message now to all users. This option allows the admin to push a message at any time to all users who have opted in to receive news and promotional messages. After clicking on the second option, you will be directed to a new page containing a text entry box where you may add your desired message.</span>
+
+                &nbsp;
+
+                <span style="font-weight: 400;">Once you have finished creating your message, simply click the Send button. Subsequently, a page will display the results of your message. These results contain information regarding the message. For example, you will be shown how many notifications were sent out with further detail pertaining to whether or not they were push or SMS notifications. This allows you to understand how many people your message is reaching and how it is reaching them, therefore allowing you to enhance your marketing strategies.</span>
+                </p>
+            </div>
+        </div>
+        <!--Accordion 10-->
+        <div class="acc-content-box">
+            <div id="compatable-plugins" class="acc-title">
+                <a href='#compatable-plugins' class="accordion">What currency plugins are compatible with your Precious Metals Automated Product Pricing plugin?</a>
+            </div>
+            <div class="panel">
+                <p>
+                    We have tested and confirmed compatibility with the three most popular multi-currency plugins in the WordPress plugin store. These plugins will work out of the box with <span><a href="https://wordpress.org/plugins/precious-metals-automated-product-pricing-pro/" target="_blank" rel="noopener">our plugin</a></span> as of version 2.9.9. If you are not using at least version 2.9.9 of our plugin, currency switching plugins may not be compatible.
+
+                    Please note the version with which they have been tested.
+                <div id="compatibility" class="desktop-code">
+                    <ol>
+                        <li>CURCY – Multi Currency for WooCommerce
+                            <ul>
+                                <li>By: Villatheme</li>
+                                <li>Tested With Version: 2.1.9</li>
+                                <li>Url: <span><a href="https://wordpress.org/plugins/woo-multi-currency/" target="_blank" rel="noopener">https://wordpress.org/plugins/woo-multi-currency/</a></span></li>
+                            </ul>
+                        </li>
+                        <li>WOOCS – Currency Switcher for WooCommerce
+                            <ul>
+                                <li>By: realmag777</li>
+                                <li>Test With Version: 1.3.7.3</li>
+                                <li>Url: <span><a href="https://wordpress.org/plugins/woocommerce-currency-switcher/" target="_blank" rel="noopener">https://wordpress.org/plugins/woocommerce-currency-switcher/</a></span></li>
+                            </ul>
+                        </li>
+                        <li>Currency Switcher for WooCommerce
+                            <ul>
+                                <li>By: WP Wham</li>
+                                <li>Tested With Version: 2.15.0</li>
+                                <li>Url: <span><a href="https://wordpress.org/plugins/currency-switcher-woocommerce/" target="_blank" rel="noopener">https://wordpress.org/plugins/currency-switcher-woocommerce/</a></span></li>
+                                <li>Note: If you use this plugin and the mini cart is not updating properly, go to the plugin’s advanced settings and enable “Fix mini cart”.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!--Accordion 11-->
+        <div class="acc-content-box">
+            <div id="my-plugin-doesnt-work" class="acc-title">
+                <a href='#my-plugin-doesnt-work' class="accordion">Why does my currency plugin not work with your Precious Metals Automated Product Pricing plugin?</a>
+            </div>
+            <div class="panel">
+                <p>
+                    If you are not using one of the plugins that we have confirmed to be compatible in the list mentioned <span><a href="#elementor-tab-title-21212">here</a></span>, there are a couple of things to look for.
+
+                    <span><a href="https://wordpress.org/plugins/precious-metals-automated-product-pricing-pro/" target="_blank" rel="noopener">Our plugin</a> </span>depends on the get woocommerce_currency() function which returns the current WooCommerce currency code. If your currency switcher plugin is not updating the WooCommerce currency then our plugin will not update the product prices with the new currency.
+
+                    The other thing that may be causing your plugin to not work properly is the priority at which the woocommerce_product_get_price filter is set. As of version 2.9.9, our Product Catalog plugin is setting the priority of the aforementioned filter to 10000 in an attempt for our hook to be run last. If the priority of said filter in the currency plugin is higher than 10000, it may be overriding the price that is being returned from the<span> <a href="https://nfusionsolutions.com/product-pricing-catalog/" target="_blank" rel="noopener">Product Catalog</a>.</span>
+                </p>
+            </div>
+        </div>
+        <!--Accordion 12-->
+        <div class="acc-content-box">
+            <div id="modify-plugin-function" class="acc-title">
+                <a href='#modify-plugin-function' class="accordion">Can I modify the functionality of your Precrious Metals Automated Product Pricing plugin?</a>
+            </div>
+            <div class="panel">
+                <p>
+                <div>If <span><a href="https://wordpress.org/plugins/precious-metals-automated-product-pricing-pro/" target="_blank" rel="noopener">our free plugin</a></span> does not support your specific desired behavior, you can modify your local copy of the plugin to have custom behavior if you choose. Please keep in mind the following cautions if you do decide to modify the plugin:</div>
+                <div></div>
+                <div>1. We do not offer support for modified versions of our plugins. Once you have modified the code from its public source all development support for that plugin is out of scope for our team.</div>
+                <div>2. If you modify your local copy and don’t disable auto-updates for that plugin, then the next time we release a new version your local changes will be overwritten and lost.</div>
+                <div>3. If you do disable auto-updates and modify your local copy you will no longer receive upgrades when we release them. This means you will not receive the benefit of future bug fixes and/or feature enhancements. It may be possible for your developer to examine the code in the public repository and merge in the changes, but our team can provide no support for the merge, nor for any of the code of your customized plugin.</div>
+                </p>
+            </div>
+        </div>
+        <!--Accordion 13-->
+        <div class="acc-content-box">
+            <div id="display-currency-by-switcher-plugin" class="acc-title">
+                <a href='#display-currency-by-switcher-plugin' class="accordion">How do I get my widgets to be displayed in the currency set by my currency switcher plugin?</a>
+            </div>
+            <div class="panel">
+                <p>
+                    To do this, you must be using one of our supported currency switcher plugins.
+
+                    If you are using a supported currency switcher, you have two options:
+
+                    <strong>1.</strong> Use our <span><a href="https://wordpress.org/plugins/precious-metals-chart-and-widgets/" target="_blank" rel="noopener">WordPress Charts &amp; Widgets Plugin</a></span>
+
+                    As of version 1.2.4, our widgets plugin will work out of the box with any of the aforementioned supported currency switchers
+
+                    <strong>2.</strong> Use our currency helper script
+
+                    The currency helper script is implemented in a very similar fashion to our default widget scripts. You simply need to paste a script into the page where you would like to display the widget. If you would like to use this option, please visit our <span><a href="#elementor-tab-title-7634">tutorial on how to implement the currency helper script</a>.</span>
+                </p>
+            </div>
+        </div>
+
+        <h2 class="word-tutorials">TUTORIALS</h2>
+
+        <!--Accordion 14-->
+        <div class="acc-content-box">
+            <div id="add-multiple-instances" class="acc-title">
+                <a href='#add-multiple-instances' class="accordion">How to add multiple instances of one widget to the same page</a>
+            </div>
+            <div id="js-p" class="panel">
+                <p>
+                    To do this, each widget must have a unique ID so that when they are loaded into the page, there are no javascript errors or conflicts.
+
+                    Therefore, when you are adding multiple instances of the same widget to a single page, you need to change the ID of the DIV element so that it is unique within that page; then, modify the src attribute within the script by adding “/your-id” to the end of the root domain. By changing the ID and modifying the src, you are telling the script which DIV element to load the chart into.
+
+                    For example, here is a default chart widget script that has been copied from the preview page:
+                <pre class="desktop-code"><code>&lt;div id='c528ee05-722d-4762-a635-213197f7b8b4' style='width:100%;height:100%;'&gt;&lt;/div&gt;
+            &lt;script&gt;
+                (function(){
+                    var t = document.getElementsByTagName('script')[0];
+                    var s = document.createElement('script'); s.async = true;
+                    s.src = 'https://widget.nfusionsolutions.com/widget
+            /script/chart/1/32796899-2cc3-4454-ac51-2c95c78799af/c528ee05-722d-4762-a635-213197f7b8b4';
+                    t.parentNode.insertBefore(s, t);
+                })();
+            &lt;/script&gt;</code></pre>
+                <pre class="mobile-code"><code>&lt;div id='c528ee05-722d-4762-a635-213197f7b8b4' style='width:100%;
+            height:100%;'&gt;&lt;/div&gt;
+            &lt;script&gt;
+                (function(){
+                    var t = document
+            .getElementsByTagName
+             ('script')[0];
+                    var s = document
+            .createElement
+            ('script'); s.async = true;
+                    s.src = 'https://widget
+            .nfusionsolutions.com
+             /widget/script/chart/1 
+            /32796899-2cc3-4454-ac51-2c95c78799af
+            /c528ee05-722d-4762-a635-213197f7b8b4';
+                    t.parentNode
+            .insertBefore(s, t);
+                })();
+            &lt;/script&gt;</code></pre>
+                Now say you wanted to add another chart on the same page (maybe to change the selected symbol for example). Here is what it would look like to add a second instance of the same widget to a single page:
+                <pre class="desktop-code"><code>&lt;div id='my-custom-id' style='width:100%;height:100%;'&gt;&lt;/div&gt;
+            &lt;script&gt;
+                (function(){
+                    var t = document.getElementsByTagName('script')[0];
+                    var s = document.createElement('script'); s.async = true;
+                    s.src = 'https://widget.nfusionsolutions.com/widget/script/chart/1/32796899-2cc3-4454-ac51-2c95c78799af/c528ee05-722d-4762-a635-213197f7b8b4/my-custom-id';
+                    t.parentNode.insertBefore(s, t);
+                })();
+            &lt;/script&gt;</code></pre>
+                <pre class="mobile-code"><code>&lt;div id='c528ee05-722d-4762-a635-213197f7b8b4' style='width:100%;
+            height:100%;'&gt;&lt;/div&gt;
+            &lt;script&gt;
+                (function(){
+                    var t = document
+            .getElementsByTagName
+            ('script')[0];
+                    var s = document
+            .createElement
+            ('script'); s.async = true;
+                    s.src = 'https://widget
+             .nfusionsolutions.com
+             /widget/script
+             /chart/1
+            
+            /32796899-2cc3-4454-ac51-2c95c78799af
+             /c528ee05-722d-4762-a635-213197f7b8b4';
+                    t.parentNode
+            .insertBefore(s, t);
+                })();
+            &lt;/script&gt;</code></pre>
+                Notice how everything is the same except for the DIV element ID and the end of the src attribute.
+                </p>
+            </div>
+        </div>
+
+        <!--Accordion 15-->
+        <div class="acc-content-box">
+            <div id="external-buttons" class="acc-title">
+                <a href='#external-buttons' class="accordion">How to have external buttons that manipulate the iframe</a>
+            </div>
+            <div id="js-iframe-p" class="panel">
+                <p>
+                <div class="desktop-code">To do this, you must connect the two elements, both the button and the iframe, via javascript. This tutorial will use the example of creating a button that changes the selected symbol of a chart. First, start by adding your desired event listener. In this example, since we are using a button we would add a click event. Once you have added the event listener to the button element, create a function that will manipulate the iframe and call it from within the click event. Now, this function will run every time the button is clicked. Next, you will need to get access to the iframe element. Once you have access, you may then manipulate its attributes. In this example, we will be manipulating the “src”. Once you get the src of the iframe, you simply need to replace or override that src URL with the new desired src URL.For example, a default chart src URL looks like this: “https://widget.nfusionsolutions.com/widget/chart/1/fya3e32-e870-adf20-a9f3-c88c636f7s8d/188e705d-23afa-45dd-fce21-09c8298af4f2”
+
+                    If you want to change the symbol when the button is clicked, the src URL would look like this: “https://widget.nfusionsolutions.com/widget/chart/1/fya3e32-e870-adf20-a9f3-c88c636f7s8d/188e705d-23afa-45dd-fce21-09c8298af4f2?selected=silver”
+
+                    When you replace the src URL in the javascript the chart iframe will then update and display the new src URL.
+
+                    <strong>Below is an example code snippet using jQuery to switch the charts selected symbol to silver:</strong>
+
+                    let button = $(‘.sample-button’) , widget = $(‘#188e705d-23afa-45dd-fce21-09c8298af4f2’);
+
+                    button.click(changeSymbol(widget));
+
+                    function changeSymbol() {
+                    widget.children(“iframe”).attr(“src”, “https://widget.nfusionsolutions.com/widget/script/chart/1/6e98ae99-d878-43a2-81f0-a2528bd3d47e/5444e580-e249-426f-b07f-d23c19049c08” + “?selected=silver”);
+                    }
+
+                </div>
+                <div class="mobile-code">To do this, you must connect the two elements, both the button and the iframe, via javascript. This tutorial will use the example of creating a button that changes the selected symbol of a chart. First, start by adding your desired event listener. In this example, since we are using a button we would add a click event. Once you have added the event listener to the button element, create a function that will manipulate the iframe and call it from within the click event. Now, this function will run every time the button is clicked. Next, you will need to get access to the iframe element. Once you have access, you may then manipulate its attributes. In this example, we will be manipulating the “src”. Once you get the src of the iframe, you simply need to replace or override that src URL with the new desired src URL.For example, a default chart src URL looks like this: “https://widget.nfusionsolutions.com
+                    /widget/chart/1/fya3e32-e870-adf20-a9f3-c88c636f7s8d/188e705d-23afa-45dd-fce21-09c8298af4f2”
+
+                    If you want to change the symbol when the button is clicked, the src URL would look like this: “https://widget
+                    .nfusionsolutions.com/widget
+                    /chart/1/fya3e32-e870-adf20-a9f3-c88c636f7s8d/188e705d-23afa-45dd-fce21-09c8298af4f2?selected=silver”
+
+                    When you replace the src URL in the javascript the chart iframe will then update and display the new src URL.
+
+                    <strong>Below is an example code snippet using jQuery to switch the charts selected symbol to silver:</strong>
+
+                    let button = $(‘.sample-button’) , widget = $(‘#188e705d-23afa-45dd-fce21-09c8298af4f2’);
+
+                    button.click(changeSymbol(widget));
+
+                    function changeSymbol() {
+                    widget.children(“iframe”).attr(“src”, “https://widget.nfusionsolutions.com
+                    /widget/script/chart/1/6e98ae99-d878-43a2-81f0-a2528bd3d47e/5444e580-e249-426f-b07f-d23c19049c08” + “?selected=silver”);
+                    }
+
+                </div>
+                </p>
+            </div>
+        </div>
+        <!--Accordion 16-->
+        <div class="acc-content-box">
+            <div id="reset-catalog-password" class="acc-title">
+                <a href='#reset-catalog-password' class="accordion">How to reset your product catalog password</a>
+            </div>
+            <div class="panel">
+                <p>
+                <div class="desktop-code">
+                    <h4>If you are logged in and want to change your password:</h4>
+                    While logged in to the product catalog, navigate to the menu item in the upper right-hand corner of your screen within the navigation menu and click on the item that displays your username. Once you have clicked your username, a dropdown will appear with four options. Click on the second option, “password”.
+
+                    From here, you can simply create a new password. Enter the old password for the specified user and then enter the user’s new password. Last, confirm the new password to assure that it is correct.
+
+                    Once you have filled out all of the required fields in order to reset your password, click the submit button at the bottom of the form and it will submit your changes. Your new password will then take effect immediately.
+                    <h4>If you are not logged in and have forgotten/lost your password:</h4>
+                    Try to utilize the password reset functionality. At the login screen click on “can’t access your account”, then choose “work or school” account, then complete the prompts to initiate password reset. If you are still unable to log in contact <span><a href="mailto:support@nfusionsolutions.com">support@nfusionsolutions.com</a>.</span>
+
+                </div>
+                <div class="mobile-code">
+                    <h4>If you are logged in and want to change your password:</h4>
+                    While logged in to the product catalog, navigate to the menu item in the upper right-hand corner of your screen within the navigation menu and click on the item that displays your username. Once you have clicked your username, a dropdown will appear with four options. Click on the second option, “password”.
+
+                    From here, you can simply create a new password by entering the old password for the specified user and then enter the user’s new password, and then finally confirm the new password to assure that it is correct.
+
+                    Once you have filled out all of the required fields in order to reset your password, click the submit button at the bottom of the form and it will submit your changes. Your new password will then take effect immediately.
+                    <h4>If you are not logged in and have forgotten/lost your password:</h4>
+                    Try to utilize the password reset functionality. At the login screen click on “can’t access your account”, then choose “work or school” account, then complete the prompts to initiate password reset. If you are still unable to log in contact
+                    <span><a href="mailto:support@nfusionsolutions.com">support@nfusionsolutions.com</a>.</span>
+
+                </div>
+                </p>
+            </div>
+        </div>
+        <!--Accordion 17-->
+        <div class="acc-content-box">
+            <div id="widgets-using-currency-helper-script" class="acc-title">
+                <a href='#widgets-using-currency-helper-script' class="accordion">How to implement widgets using the currency helper script</a>
+            </div>
+            <div class="panel">
+                <p>
+                <div class="desktop-code">
+                    <div id="currency-tutorial"></div>
+                    To implement your widgets using our currency helper there are two simple steps.1. To ensure that the helper script is available before attempting to use it, you must add the following script within your header:
+                    <pre><code>&lt;script src="https://widgetcdn.nfusionsolutions.com/asset/static/1/common/1/js/currency-interop.min.js"&gt;&lt;/script&gt;
+                </code></pre>
+                    2. Now that the script is available to use, you can add a widget to the page by using code similar to the following:
+                    <pre><code>&lt;div id='5444e580-e249-426f-b07f-d23c19049c08' style='width:100%;height:100%;'&gt;&lt;/div&gt;
+                &lt;script&gt;
+                (function(){
+                nFSCurrencyHelper.init('https://widget.nfusionsolutions.com/widget/script/chart/1/6e98ae99-d878-43a2-81f0-a2528bd3d47e/5444e580-e249-426f-b07f-d23c19049c08');
+                })();
+                &lt;/script&gt;</code></pre>
+                    This script is very similar to our default widget scripts, with the exception that you need to use the “nFSCurrencyHelper.init” function and pass the function the widget’s src.
+
+                </div>
+                <div class="mobile-code">
+
+                    To implement your widgets using our currency helper there are two simple steps.1. To ensure that the helper script is available before attempting to use it, you must add the following script within your header:
+                    <pre><code>&lt;script src="https://widgetcdn
+                .nfusionsolutions.com/asset
+                /static/1/common/1/js
+                /currency-interop.min.js"&gt;&lt;/script&gt;
+                </code></pre>
+                    2. Now that the script is available to use, you can add a widget to the page by using code similar to the following:
+                    <pre><code>&lt;div id='5444e580-e249-426f-b07f-d23c19049c08' style='width:100%;
+                height:100%;'&gt;&lt;/div&gt;
+                &lt;script&gt;
+                (function(){
+                nFSCurrencyHelper.init('
+                https://
+                widget.nfusionsolutions.com
+                /widget/script/chart/1
+                /6e98ae99-d878-43a2-81f0-a2528bd3d47e/5444e580-e249-426f-b07f-d23c19049c08');
+                })();
+                &lt;/script&gt;</code></pre>
+                    This script is very similar to our default widget scripts, with the exception that you need to use the “nFSCurrencyHelper.init” function and pass the function the widget’s src.
+
+                </div>
+                </p>
+            </div>
+        </div>
+        <h2 class="word-tutorials">SETUP / INSTALL GUIDES</h2>
+        <!--Accordion 18-->
+        <div class="acc-content-box">
+            <div id="install-shopify-app" class="acc-title">
+                <a href='#install-shopify-app' class="accordion">How to install and configure Shopify app</a>
+            </div>
+            <div class="panel">
+                <p>
+                    Integration between the Product Pricing Catalog service and Shopify is accomplished via <span><a href="https://nfusionsolutions.com/metals/solutions/integration/" target="_blank" rel="noopener">API integration</a></span> between the two software platforms. Therefore, you must have a valid subscription to the <span><a href="https://nfusionsolutions.com/product-pricing-catalog/" target="_blank" rel="noopener">nFusion Solutions Product Pricing Catalog</a></span>. If you do not yet have a subscription, please <span><a href="https://nfusionsolutions.com/contact-us/" target="_blank" rel="noopener">contact sales</a>.</span>
+
+                    App Setup:
+                <ul>
+                    <li><a href="https://www.cmegroup.com/trading-hours.html#metals" target="_blank" rel="noopener"><span>Install App</span></a></li>
+                </ul>
+                Once the app is installed and activated:
+                <ul>
+                    <li>Navigate to the nFusion app settings</li>
+                    <li>Set the following required items and save your changes:
+                        <ul>
+                            <li style="list-style-type: none;">
+                                <ul>
+                                    <li>Catalog Subdomain</li>
+                                    <li>Catalog Sales Channel</li>
+                                    <li>Catalog API Key</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        &nbsp;
+                    </li>
+                </ul>
+                In regard to the sales channel, you can either create a new sales channel or use any existing sales channel you would like for this app integration. For example, you could create a sales channel named “Website” that contains all of the products that you want to be available to your nFusion Shopify app. Any products that you want price updates for in Shopify must be tagged with the sales channel you previously choose for this app integration. To add a product to a sales channel, go to the main Product tab and select the icon next to a product SKU. This will then expand that product record and allow you to add/remove products from sales channels. The SKU field for each product in the nFusion Product Catalog must match exactly the corresponding product you want to be updated in Shopify.
+
+                Once you have completed the steps above, your app should be fully integrated with your nFusion Product Catalog.
+                </p>
+            </div>
+        </div>
+        <!--Accordion 19-->
+        <div class="acc-content-box">
+            <div id="install-wordpress-plugin" class="acc-title">
+                <a href='#install-wordpress-plugin' class="accordion">How to install and configure WordPress plugin</a>
+            </div>
+            <div class="panel">
+                <p>
+                    Integration between the <span><a href="https://nfusionsolutions.com/product-pricing-catalog/" target="_blank" rel="noopener">Product Pricing Catalog service</a> </span>and WP/WC is accomplished via <span><a href="https://nfusionsolutions.com/metals/solutions/integration/" target="_blank" rel="noopener">API integration</a> </span>between the two software platforms. Therefore, you must have a valid subscription to the <span><a href="https://nfusionsolutions.com/product-pricing-catalog/" target="_blank" rel="noopener">nFusion Solutions Product Pricing Catalog</a>.</span> If you do not yet have a subscription, please <span><a href="https://nfusionsolutions.com/contact-us/" target="_blank" rel="noopener">contact sales</a>.</span>
+
+                    Plugin Setup:
+                <ul>
+                    <li style="list-style-type: none;">
+                        <ul>
+                            <li><a href="https://wordpress.org/plugins/precious-metals-automated-product-pricing-pro/" target="_blank" rel="noopener"><span>Install Plugin</span></a></li>
+                            <li>Go to Plugins menu and Select NFUSION Plugin for WooCommerce</li>
+                        </ul>
+                    </li>
+                </ul>
+                &nbsp;
+
+                Once the plugin is installed and activated, navigate to the nFusion Settings within the settings submenu in the WordPress toolbar. Next, fill in the text entry boxes with the required information pertaining to your product catalog. In regard to the sales channel, you can either create a new or use any existing sales channel you would like for this plugin integration. For example, you could create a sales channel named “Website” that contains all of the products that you want to be available to your nFusion WordPress plugin.
+
+                Moreover, any products that you want price updates for must be tagged with the sales channel you choose for this plugin integration. To add a product to a sales channel, go to the main Product tab and select the icon next to a product SKU. This will then expand that product record and allow you to add/remove products from Sales Channels.
+
+                Once you have linked the plugin with your product catalog via the sales channel, go to the Products page in your WordPress/WooCommerce site. Then, add the Product SKU for each product in the nFusion Solutions Catalog Integration section at the bottom of the product pages. This SKU needs to match the product SKU in the nFusion Product Catalog service.
+
+                Once you have completed the steps above your plugin should be fully integrated with your nFusion Product Catalog.
+                </p>
+            </div>
+        </div>
+        <!--Accordion 20-->
+        <div class="acc-content-box">
+            <div id="setup-eBay" class="acc-title">
+                <a href='#setup-eBay' class="accordion">How to setup eBay integration</a>
+            </div>
+            <div class="panel">
+                <p>
+                <div class="desktop-code">
+
+                    Below is a step-by-step process for how to set up eBay integration with the Product Pricing Catalog.
+                    <ol>
+                        <li aria-level="1">Create a sales channel that will be used to group all products you want to integrate into eBay. You may skip this step if you already have a sales channel you would like to use.</li>
+                        <li aria-level="1">Add any product(s) you want to integrate with eBay to the eBay sales channel.
+                            <ol>
+                                <li aria-level="1">You can add products individually to a sales channel by clicking on the arrow icon to the left of a product’s SKU on the main Products tab. This will expand the row and you can then click on the Sales Channel tab and then click the pencil (edit) icon to add that product to one or more sales channels.</li>
+                                <li aria-level="1">You can add All Products to a Sales Channel by clicking on the top navigation Config / Attributes and then scrolling down to the Sales Channel section. From here, pick the Sales Channel you want to add all products to and click the Add All Products button on the right-hand side.</li>
+                            </ol>
+                        </li>
+                        <li aria-level="1">Click on the top navigation Integration / eBay then go to the eBay tab in the catalog. Go to where it says “eBay API Authentication Token”. There is a link there “[To issue a new authorization token for your eBay integration click here]”. Click that link and issue a token to nFusion Catalog to allow it to update your eBay listings.</li>
+                        <li aria-level="1">Click the link that says “[To refresh your eBay listings manually before the next scheduled interval click here]”. You do not need to do this every time, as it will auto-update once the integration job has been scheduled. If you have any active or scheduled Fixed Price eBay listings they should now appear in the table.</li>
+                        <li aria-level="1">Map eBay listings to catalog products. To do this go to each row in the table, click edit, then in the column “Catalog Product” select the SKU of the product to map.</li>
+                        <li aria-level="1">Create your eBay listings markups. If markups are applied to eBay listings they are applied to the “retail ask” of that product in the catalog. There are several options for pricing eBay listings:
+                            <ol>
+                                <li aria-level="2">Apply a markup to the sales channel used for eBay listings. This will apply a consistent markup to all listings (i.e. 10% above retail ask).</li>
+                                <li aria-level="2">Apply markup in each row of the eBay listings mapping table. This allows you to specify different markup amounts for each listing.</li>
+                                <li aria-level="2">Combine options a &amp; b. Sales channel markups are applied first, then mapping level markups.</li>
+                            </ol>
+                        </li>
+                        <li aria-level="2">Once your initial setup is complete notify nFusion Solutions so that your integration can be started.</li>
+                        <li aria-level="2">Keep in mind that as you create new listings, or existing listings expire or are renewed (if eBay creates a new listing id) you will need to perform the mapping step again.</li>
+                    </ol>
+                    A few things to note during this process:
+                    <ul>
+                        <li>Only Fixed Price listings can be updated on eBay</li>
+                        <li>Listings cannot be created in eBay from the catalog, only updated</li>
+                        <li>Only the price field is updated on eBay</li>
+                        <li>The catalog does not take into account inventory levels</li>
+                        <li>Zero prices are not pushed to eBay, they are skipped</li>
+                        <li>eBay integration job can not run more often than every 10 minutes. (This is because of limitations enforced by the eBay API)</li>
+                        <li>Does not support tiered pricing</li>
+                        <li>Only supports US instances of eBay listings</li>
+                    </ul>
+                </div>
+
+                </p>
+            </div>
+        </div>
+        <!--Accordion 21-->
+        <div class="acc-content-box">
+            <div id="first-time-catalog-setup" class="acc-title">
+                <a href='#first-time-catalog-setup' class="accordion">How to setup your catalog for the first time</a>
+            </div>
+            <div class="panel">
+                <p>
+                    The Product Pricing Catalog (PPC) is a dynamic pricing calculator and product pricing management dashboard that incorporates real-time spot prices, currency rates, unit weight, user-entered markups, and performs on-demand calculations, which are integrated into your e-commerce system via APIs. Our platform allows you to set all of your product pricing exactly how you would like it in your management dashboard and then automatically pull that live dynamic pricing into your website, mobile app, custom invoicing page, ERP, etc.
+
+                    Once logged in to the Product Pricing Catalog (PPC) you will see some demo products already set up. You can use these example products, modify them, or add new products as needed. You can edit a product to adjust the markups and get the pricing exactly how you need it, applying dollar or % values or both. You can set your Ask (sale prices) as well as your Bid (buying prices) in this same view. Keep in mind the product SKU (unique primary key per product) and the Sales Channel are required for product prices to properly update within your E-Commerce software.
+
+                    In addition, the Product Pricing Catalog (PPC) has a series of APIs that you can access once you are logged in. In the upper right-hand corner under your username, there is a dropdown menu that has the API documentation in it. You can also access your PPC API token in this drop-down menu.
+                </p>
+            </div>
+        </div>
+        <!--Accordion 22-->
+        <div class="acc-content-box">
+            <div id="change-company-name" class="acc-title">
+                <a href='#change-company-name' class="accordion">How to change my company name</a>
+            </div>
+            <div class="panel">
+                <p>
+                    <span style="font-weight: 400;">Send a request to </span><span><a href="mailto:support@nfusionsolutions.com"><span style="font-weight: 400;">support@nfusionsolutions.com</span></a></span><span style="font-weight: 400;"> with current company name and new company name including address if changed. </span>
+                </p>
+            </div>
+        </div>
+        <h2 class="word-tutorials">DOCUMENTATION</h2>
+    <!--Accordion 24-->
+    <div class="acc-content-box">
+        <div id="supported-currencies" class="acc-title">
+            <a href='#supported-currencies' class="accordion">Supported Currencies, Metal, Indices, and Benchmarks</a>
+        </div>
+        <div class="panel">
+            <p>
+                To see supported:
+
+                <strong>Currencies:</strong>
+
+                Visit our <span><a href="https://api.nfusionsolutions.biz/api-docs/index.html" target="_blank" rel="noopener">API documentation</a> </span>under Currencies and view the endpoints where the path ends in “supported”
+
+                <strong>Metals:</strong>
+
+                Visit our <span><a href="https://api.nfusionsolutions.biz/api-docs/index.html" target="_blank" rel="noopener">API documentation</a> </span>under Metals and view the endpoints where the path ends in “supported”
+
+                <strong>Indices:</strong>
+
+                Visit our <span><a href="https://api.nfusionsolutions.biz/api-docs/index.html" target="_blank" rel="noopener">API documentation</a></span> under Currencies and view the endpoints where the path ends in “supported”
+
+                <strong>Benchmarks:</strong>
+
+                Visit our <span><a href="https://api.nfusionsolutions.biz/api-docs/index.html" target="_blank" rel="noopener">API documentation</a> </span>under Metals and view the endpoints where the path contains “benchmark”
+            </p>
+        </div>
+    </div>
+        <!--Accordion 24-->
+        <div class="acc-content-box">
+            <div id="supported-currencies" class="acc-title">
+                <a href='#supported-currencies' class="accordion">Supported Currencies, Metal, Indices, and Benchmarks</a>
+            </div>
+            <div class="panel">
+                <p>
+                    To see supported:
+    
+                    <strong>Currencies:</strong>
+    
+                    Visit our <span><a href="https://api.nfusionsolutions.biz/api-docs/index.html" target="_blank" rel="noopener">API documentation</a> </span>under Currencies and view the endpoints where the path ends in “supported”
+    
+                    <strong>Metals:</strong>
+    
+                    Visit our <span><a href="https://api.nfusionsolutions.biz/api-docs/index.html" target="_blank" rel="noopener">API documentation</a> </span>under Metals and view the endpoints where the path ends in “supported”
+    
+                    <strong>Indices:</strong>
+    
+                    Visit our <span><a href="https://api.nfusionsolutions.biz/api-docs/index.html" target="_blank" rel="noopener">API documentation</a></span> under Currencies and view the endpoints where the path ends in “supported”
+    
+                    <strong>Benchmarks:</strong>
+    
+                    Visit our <span><a href="https://api.nfusionsolutions.biz/api-docs/index.html" target="_blank" rel="noopener">API documentation</a> </span>under Metals and view the endpoints where the path contains “benchmark”
+                </p>
+            </div>
+        </div>
+            <!--Accordion 24-->
+    <div class="acc-content-box">
+        <div id="supported-currencies" class="acc-title">
+            <a href='#supported-currencies' class="accordion">Supported Currencies, Metal, Indices, and Benchmarks</a>
+        </div>
+        <div class="panel">
+            <p>
+                To see supported:
+
+                <strong>Currencies:</strong>
+
+                Visit our <span><a href="https://api.nfusionsolutions.biz/api-docs/index.html" target="_blank" rel="noopener">API documentation</a> </span>under Currencies and view the endpoints where the path ends in “supported”
+
+                <strong>Metals:</strong>
+
+                Visit our <span><a href="https://api.nfusionsolutions.biz/api-docs/index.html" target="_blank" rel="noopener">API documentation</a> </span>under Metals and view the endpoints where the path ends in “supported”
+
+                <strong>Indices:</strong>
+
+                Visit our <span><a href="https://api.nfusionsolutions.biz/api-docs/index.html" target="_blank" rel="noopener">API documentation</a></span> under Currencies and view the endpoints where the path ends in “supported”
+
+                <strong>Benchmarks:</strong>
+
+                Visit our <span><a href="https://api.nfusionsolutions.biz/api-docs/index.html" target="_blank" rel="noopener">API documentation</a> </span>under Metals and view the endpoints where the path contains “benchmark”
+            </p>
+        </div>
+    </div>
+    <!--Accordion 25-->
+    <div class="acc-content-box">
+        <div id="config-and-paramss" class="acc-title">
+            <a href='#config-and-params' class="accordion">Widget types, supported configuration options and query parameters</a>
+        </div>
+        <div class="panel">
+            <p>
+                <em>Configurations</em> are default values that are able to be changed and become the new default for that widget. <em>Query string parameters</em> are values that override the default values of the widget on a per widget-instance basis. For example, you can use the same chart multiple times with each instance being different due to <em>query string parameters</em>. Let’s say that the default currency within the widgets <em>configurations</em> is set to USD. By adding a <em>query string parameter</em> to one of the chart instances src URLs we can override the currency to something different for only that instance of the chart.
+
+                <strong>Standard Configurations:</strong>
+            <ul>
+                <li>Currency: Changes the default currency to be displayed.</li>
+                <li>Unit of Measure: Changes the default unit of measure to be displayed.</li>
+                <li>Auto Update: Can be enabled or disabled (enabled by default).</li>
+                <li>Update Interval: Changes the interval in which the widget updates the prices.</li>
+                <li>Link: When a user clicks within the widget area they would be redirected to the provided URL</li>
+                <li>Timezone: Changes the default timezone to be displayed.</li>
+                <li>Whitelist URL(s): This controls which URLs the widget is allowed to be displayed on.</li>
+            </ul>
+            <strong>Standard Query String Operations/Parameters:</strong>
+            <ul>
+                <li>Symbols (?symbols): Changes the symbols that populate the widget. This operation also has the ability to reorganize the order in which the symbols are displayed.</li>
+                <li>Currency (?currency): Changes the currency that the prices are displayed in.</li>
+                <li>Unit of Measure (?unitofmeasure): Changes the unit of measure that the prices are displayed in.</li>
+                <li>Width (?width): Changes the width of the widget iframe.</li>
+                <li>Height (?height): Changes the height of the widget iframe.</li>
+            </ul>
+            <h3><strong>Charts:</strong></h3>
+            Within our chart widgets, there are two main versions, V1 and V2. The only difference between these two versions is the layout of the chart elements. In regard to functionality, both charts are capable of accomplishing the same tasks. That being said, both versions can support the following configurations and query string operations:
+
+            <strong>Configurations:</strong>
+            <ul>
+                <li>Display Navigation Bar: This option allows you to either display or hide the navigation bar at the bottom of the chart. (displayed by default)</li>
+            </ul>
+            <strong>Query String Operations/Parameters:</strong>
+            <ul>
+                <li style="list-style-type: none;">
+                    <ul>
+                        <li>Selected Symbol (?selected=): Changes the symbol that the chart initially displays.</li>
+                        <li>Selected Timeframe (?timeframeindex=): Changes the timeframe that the chart initially displays.</li>
+                        <li>Chart Type (?charttype=): Changes the line style that is graphed within the chart area.</li>
+                    </ul>
+                </li>
+            </ul>
+            &nbsp;
+
+            <p>Use this interactive demo of our V1 chart to better understand how the query string parameters work:</p>
+            <iframe id="iframe-inter-chart" title="chart demo" src="https://widget.nfusionsolutions.com/widget/chart/1/6e98ae99-d878-43a2-81f0-a2528bd3d47e/efa52754-9780-4dfb-a5d0-c975cea67f4d" scrolling="no" data-mce-fragment="1"></iframe>
+            <h3><strong>Tables:</strong></h3>
+            Within our table widgets, there are six versions, V1 (standard), V2 (carousel), V3(Historical Performance Table), V4 (Annual Historical Performance Table), V5 (Multi-Unit Table), and V6 (Multi-Unit Multi-Currency Table).
+            <h4><strong>V1 &amp; V2:</strong></h4>
+            Similar to the V1 and V2 charts, the only difference between the V1 and V2 tables is the styling and position of table elements.
+
+            <strong>Configurations:</strong>
+            <ul>
+                <li>Table Fields: Displays the selected field(s)
+                    <ul>
+                        <li>Ask</li>
+                        <li>Bid</li>
+                        <li>Change</li>
+                        <li>Change Percent</li>
+                        <li>High</li>
+                        <li>Low</li>
+                        <li>Pr. Close</li>
+                        <li>Open</li>
+                        <li>Last</li>
+                    </ul>
+                </li>
+            </ul>
+            <strong>Query String Parameters:</strong>
+
+            Supports the standard parameters.
+            <h4><strong>V3 (Historical Performance Table):</strong></h4>
+            Our version three table is a historical performance table that displays historical data for a single selected symbol at one day, one week, one month, six months, one year, five years, ten years, and fifteen years.
+
+            <strong>Configurations:</strong>
+            <ul>
+                <li>Table Fields: Displays the selected field(s)
+                    <ul>
+                        <li>Ask</li>
+                        <li>Bid</li>
+                        <li>Change</li>
+                        <li>High</li>
+                        <li>Low</li>
+                    </ul>
+                </li>
+            </ul>
+            <strong>Query String Parameters:</strong>
+
+            Supports the standard parameters.
+            <h4><strong>V4 (Annual Historical Performance Table):</strong></h4>
+            Our version four table displays historical ask and change percent data points for multiple currencies at one-year intervals up to forty years.
+
+            <strong>Configurations:</strong>
+
+            Supports the standard parameters.
+
+            <strong>Query String Parameters:</strong>
+            <ul>
+                <li>Years (?years=): This allows you to determine how many years of data should be displayed</li>
+                <li>Currency (?currency=): A comma-separated list of currencies allows you to select multiple currencies for the data to be presented in</li>
+            </ul>
+            <h4><strong>V5 (Multi-Unit Table):</strong></h4>
+            Our version five table displays live spot prices for a single metal in multiple units of measure.
+
+            <strong>Configurations:</strong>
+            <ul>
+                <li>Table Fields: Displays the selected field(s)
+                    <ul>
+                        <li>Ask</li>
+                        <li>Bid</li>
+                        <li>Change</li>
+                        <li>Change Percent</li>
+                        <li>High</li>
+                        <li>Low</li>
+                        <li>Pr. Close</li>
+                    </ul>
+                </li>
+            </ul>
+            <strong>Query String Parameters:</strong>
+            <ul>
+                <li>Unit of Measure (?unitofmeasure=): A comma-separated list of units of measure allows you to select multiple units of measure for the data to be presented in</li>
+            </ul>
+            <h4><strong>V6 (Multi-Unit Multi-Currency Table):</strong></h4>
+            Our version six table displays live spot prices for multiple metals in multiple currencies and multiple units of measure.
+
+            <strong>Configurations:</strong>
+
+            Supports the standard parameters.
+
+            <strong>Query String Parameters:</strong>
+            <ul>
+                <li>Unit of Measure (?unitofmeasure=): A comma-separated list of units of measure allows you to select multiple units of measure for the data to be presented in</li>
+                <li>Currency (?currency=): A comma-separated list of currencies allows you to select multiple currencies for the data to be presented in</li>
+            </ul>
+            <h3><strong>Ticker:</strong></h3>
+            Our spot price ticker displays real-time data points in a responsive banner-like design.
+
+            <strong>Configurations:</strong>
+            <ul>
+                <li>Scrolling (default): This option sets the ticker to continuously scroll from left to right</li>
+                <li>Fixed: This option removes the scrolling effect and displays the ticker elements in a mobile responsive layout.</li>
+                <li>Ticker Fields: Displays the selected field(s)
+                    <ul>
+                        <li>Ask</li>
+                        <li>Bid</li>
+                        <li>Change</li>
+                        <li>Change Percent</li>
+                        <li>High</li>
+                        <li>Low</li>
+                        <li>Pr. Close</li>
+                    </ul>
+                </li>
+            </ul>
+            <strong>Query String Parameters:</strong>
+
+            Supports the standard parameters.
+            <h3><strong>RMD Calculator:</strong></h3>
+            Our RMD (required minimum distribution) Calculator allows users to view their estimated RMD through a user-friendly chart display based on input that is entered such as age, account balance, whether or not there is a primary beneficiary and estimated rate of return.
+            <h3><strong>Product Page:</strong></h3>
+            Our product page widget utilizes the product catalog and its features including sales channels and product families in order to create a full-page display with live bids and ask prices for the desired products.
+            <h3><strong>Widget Page:</strong></h3>
+            Our widget page allows you to fully utilize all the features of our chart, table, and ticker widgets by encapsulating multiple widgets in a single page layout. Within the widget page, the user has the capability to change the symbol, currency, and unit of measure for every widget instance on the page, all at the same time.
+            </p>
+        </div>
+    </div>
+    </div>
+    <script src="/static/faq.js"></script>
+</main>
+{% endblock %}
